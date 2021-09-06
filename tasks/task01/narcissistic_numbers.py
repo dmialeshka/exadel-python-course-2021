@@ -1,6 +1,6 @@
 import math
 
-k = int(input("Please enter an integer: "))
+k = int(input('Please enter an integer: '))
 
 
 def get_digits_number(num: int) -> int:
@@ -15,5 +15,5 @@ def is_narcissistic_num(num: int) -> bool:
 
 while 1 <= k <= 1000:
     if is_narcissistic_num(k):
-        print(f'narcissistic number {k}')
+        print(f'narcissistic number: {k}')
     k += 1
