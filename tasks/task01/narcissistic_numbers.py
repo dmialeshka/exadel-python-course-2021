@@ -1,10 +1,12 @@
-import math
-
-k = int(input('Please enter an integer: '))
+k = 1
 
 
 def get_digits_number(num: int) -> int:
-    return int(math.log(num, 10)) + 1
+    count = 0
+    while num > 0:
+        count += 1
+        num = num // 10
+    return count
 
 
 def is_narcissistic_num(num: int) -> bool:
