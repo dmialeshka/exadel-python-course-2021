@@ -1,13 +1,18 @@
+"""
+Implement a console program to calculate triangle area.
+
+Support at least 2 formulas:
+By base and height
+By 2 sides and the angle between them.
+
+The program must have a menu in which the user can select a formula or exit the program.
+The menu must be looped: when the calculation is done, the user is back to the menu and can select another menu option.
+"""
 import math
 
 
 def get_values(data: str):
-    values = data.split(' ')
-    first_v = int(values[0])
-    second_v = int(values[1])
-    if len(values) == 2:
-        return first_v, second_v
-    return first_v, second_v, int(values[2])
+    return map(int, data.split())
 
 
 def print_area(area):
@@ -50,6 +55,8 @@ def init_menu():
         3: close
     }
     operation = operations.get(number)
+    if operation is None:
+        init_menu()
     operation()
 
 
