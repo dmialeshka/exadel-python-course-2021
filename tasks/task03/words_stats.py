@@ -16,15 +16,17 @@ texts = [
 ci_texts = list(map(lambda text: sub('([^A-z^\s])+', '', text).lower().split(), texts))
 accumulator = {}
 
-for words in ci_texts:
-    index = ci_texts.index(words)
-    for word in words:
+for line_number, line in enumerate(ci_texts):
+    for word in line:
         d = accumulator.get(word, {})
-        line = d.get('line', index)
+        line_index = d.get('line', line_number)
         count = d.get('count', 0)
-        accumulator[word] = {'line': line, 'count': count + 1}
+        accumulator[word] = {'line': line_index, 'count': count + 1}
 
-print("{:<5} {:<5} {:<5}".format('word', 'count', 'first line'))
-for word in accumulator:
-    d = accumulator[word]
-    print("{:<5} {:<5} {:<5}".format(word, d['count'], d['line']))
+print(f"{'word':<6} {'count':<5} {'first line':<5}")
+
+sorted_accumulator = sorted(accumulator.items(), key=lambda x: x[1]['count'], reverse=True)
+
+for tup in sorted_accumulator:
+    d = tup[1]
+    print(f"{tup[0]:<6} {d['count']:<5} {d['line']:<5}")
