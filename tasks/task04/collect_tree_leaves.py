@@ -13,8 +13,7 @@ def collect_leaves(u: Union[dict, list]) -> list:
         for item in u.values():
             flatten_list.extend(collect_leaves(item))
         return flatten_list
-    else:
-        return u
+    return u
 
 
 tree = {
