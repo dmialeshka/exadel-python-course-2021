@@ -7,14 +7,14 @@ Implement a kind of unit tests via assert operator.
 from typing import Union
 
 
-def collect_leaves(u: Union[dict, list]):
+def collect_leaves(u: Union[dict, list]) -> list:
     flatten_list = []
     if isinstance(u, dict):
         for item in u.values():
             flatten_list.extend(collect_leaves(item))
+        return flatten_list
     else:
-        flatten_list.extend(u)
-    return flatten_list
+        return u
 
 
 tree = {
