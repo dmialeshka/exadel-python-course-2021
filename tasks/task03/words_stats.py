@@ -27,6 +27,5 @@ print(f"{'word':<6} {'count':<5} {'first line':<5}")
 
 sorted_accumulator = sorted(accumulator.items(), key=lambda x: x[1]['count'], reverse=True)
 
-for tup in sorted_accumulator:
-    d = tup[1]
-    print(f"{tup[0]:<6} {d['count']:<5} {d['line']:<5}")
+for word, d in sorted_accumulator:
+    print(f"{word:<6} {d['count']:<5} {d['line']:<5}")
