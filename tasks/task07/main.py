@@ -32,11 +32,12 @@ order2 = create_order()
 order3 = create_order()
 
 repository = OrderRepository()
-assert len(repository.list()) == 0
+
+assert len(repository.orders_list()) == 0
 repository.add(order1)
 repository.add(order2)
 repository.add(order3)
-assert len(repository.list()) == 3
+assert len(repository.orders_list()) == 3
 repository.delete(order2.order_id)
-
-assert len(repository.list()) == 2
+assert repository.orders_list() == [order1, order3]
+print(repository.orders_list())
